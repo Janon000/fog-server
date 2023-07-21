@@ -14,7 +14,7 @@ function Navbar() {
   return (
       <div
         id="rest"
-        className="sm:flex sm:min-h-screen w-[250px] flex-col text-sm bg-gradient-to-b from-[#0C2263] via-[#300C4D] to-[#3A0647] "
+        className="sm:flex sm:min-h-screen w-[250px] flex-shrink-0 flex-col text-sm bg-gradient-to-b from-[#0C2263] via-[#300C4D] to-[#3A0647] "
       >
         <div id="smallNav" className="flex sm:hidden h-[56px] from-[#0C2263] via-[#300C4D] to-[#3A0647] ">
           <div className="flex w-full justify-between items-center px-4">

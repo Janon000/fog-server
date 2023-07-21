@@ -125,8 +125,8 @@ function DeviceTable() {
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <div className="animate-appear text-sm mt-[20px] overflow-hidden">
-      <div id="utility-bar" className="flex flex-col justify-between">
+    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll">
+      {/* <div id="utility-bar" className="flex flex-col justify-between">
         <div className="flex">
           <button
             className="hover:border-t hover:border-x hover:rounded-t border-gray-300 p-2 text-blue-600"
@@ -150,20 +150,10 @@ function DeviceTable() {
             onChange={handleSearchInputChange}
           />
         </div>
-      </div>
-      <table className="table-auto border shadow-lg border-gray-300 bg-gray-50 mb-10 min-w-[600px]">
+      </div> */}
+      <table className="table-auto border shadow-lg border-gray-300 bg-gray-50 mb-10">
         <thead>
           <tr className="">
-            {/* {headers.map((header, index) => 
-              <th
-                key={index}
-                className="p-4 flex items-center justify-between"
-                onClick={() => handleHeaderClick({ header } as any)}
-              >
-                {header}
-                <SortIcon />
-              </th>
-            )} */}
             <th
                 className="p-4 flex items-center justify-between"
                 onClick={() => handleHeaderClick("Id")}
@@ -184,7 +174,6 @@ function DeviceTable() {
           {records.map((d: any, i: any) => {
             return (
               <tr key={i} className="border border-gray-300 hover:bg-gray-300">
-                {/* <td className="p-4">{d.id}</td> */}
                 <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis  ">
                   {d.Id}
                 </td>
