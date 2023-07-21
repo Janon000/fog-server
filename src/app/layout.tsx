@@ -18,10 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`sm:flex ${inter.className}`}>
-        <Navbar />
-        <div className="w-full">
-          <Header />
+      <body className={`flex flex-col ${inter.className}`}>
+        <Header />
+        <div className="flex max-h-screen">
+          <Navbar />
           {children}
         </div>
       </body>

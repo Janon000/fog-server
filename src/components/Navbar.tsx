@@ -12,16 +12,9 @@ function Navbar() {
   }
 
   return (
-    <div className="">
-      <div
-        id="top"
-        className="sm:flex hidden w-[250px] bg-[#0A133A] h-[56px]  text-white  items-center"
-      >
-        <div className="px-8">FOG SERVER</div>
-      </div>
       <div
         id="rest"
-        className="sm:flex sm:min-h-screen w-full flex-col text-sm bg-gradient-to-b from-[#0C2263] via-[#300C4D] to-[#3A0647] "
+        className="sm:flex sm:min-h-screen w-[250px] flex-col text-sm bg-gradient-to-b from-[#0C2263] via-[#300C4D] to-[#3A0647] "
       >
         <div id="smallNav" className="flex sm:hidden h-[56px] from-[#0C2263] via-[#300C4D] to-[#3A0647] ">
           <div className="flex w-full justify-between items-center px-4">
@@ -45,7 +38,7 @@ function Navbar() {
           </div>
         </div>
         <div id="bigNav" className={`${showNav} sm:block text-white`}>
-          <Link href={"/login"} className="">
+          {/* <Link href={"/login"} className="">
             <div className="h-12 hover:rounded flex items-center hover:bg-[rgba(255,255,255,0.25)] px-4 py-2 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +54,7 @@ function Navbar() {
               </svg>
               <p>Logout</p>
             </div>
-          </Link>
+          </Link> */}
           <Link href={"/"} className="">
             <div className=" h-12 rounded flex items-center hover:bg-[rgba(255,255,255,0.25)] px-4 py-2">
               <svg
@@ -95,9 +88,7 @@ function Navbar() {
             </div>
           </Link>
         </div>
-        
       </div>
-    </div>
   );
 }
 
