@@ -8,3 +8,6 @@ type DeviceRowData = {
     State: string;
     Registered: boolean;
   };
+
+
+  type DataRow = { [key: string]: any };

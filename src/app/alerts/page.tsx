@@ -1,10 +1,13 @@
-import Header from "@/components/Header";
-import React from "react";
+import { excelToObject } from "@/libs/ExcelToData";
 
-function Alerts() {
+
+async function Alerts() {
+
+  const data = await excelToObject()
+
   return (
     <>
-      <div>Alerts</div>
+      <div>{JSON.stringify(data['Alerts'])}</div>
     </>
   );
 }

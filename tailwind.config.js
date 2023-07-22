@@ -18,6 +18,9 @@ module.exports = {
           "0 0px 65px rgba(255, 255,255, 0.2)",
         ]
       },
+      screens: {
+        '3xl': '1880px',
+      },
     },
   },
   plugins: [],

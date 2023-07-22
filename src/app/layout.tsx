@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`flex flex-col ${inter.className}`}>
         <Header />
-        <div className="flex max-h-screen">
+        <div className="flex min-h-screen">
           <Navbar />
-          <div className="flex flex-grow">{children}</div>
+          <div className="">{children}</div>
         </div>
       </body>
     </html>

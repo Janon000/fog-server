@@ -1,15 +1,18 @@
 
 import DeviceTable from "@/components/DeviceTable";
-import { excelToArray } from "@/libs/excelToArray";
+import { excelToObject } from "@/libs/ExcelToData";
+import { useExcelStore } from "@/state/deviceData";
 
 
 export default async function Home() {
-  // const data = await excelToArray()
-  return (
+  const data = await excelToObject()
+
+  return (  
     <main className="">
       <div className="mx-2">
         <div className="text-[2.5rem]">Device List</div>
-        <DeviceTable />
+        {data.Devices.length===0 ? (<>Loading..</>):(<DeviceTable data={data['Devices']}/>)}
+        {/* <DeviceTable data={data['Devices']}/> */}
       </div>
     </main>
   );

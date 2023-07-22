@@ -5,56 +5,58 @@ import { GreenLight, RedLight } from "./Indicators";
 import SortIcon from "./SortIcon";
 
 type DeviceProps = {
-  data?: DeviceRowData[];
+  data?: any;
 };
-function DeviceTable() {
-  ("");
 
-  const headers = [
-    "Id",
-    "IP",
-    "Name",
-    "Location",
-    "Room",
-    "Status",
-    "State",
-    "Registered",
-  ];
+const headers = [
+  "Id",
+  "IP",
+  "Name",
+  "Location",
+  "Room",
+  "Status",
+  "State",
+  "Registered",
+];
 
-  const data: any = useMemo(() => {
-    return [
-      {
-        Id: "09e12d04-c2a1-4f89-a075-cedb2ef631e6",
-        IP: "192.168.1.129",
-        Name: "Light Switch-49",
-        Location: "Adrian Home",
-        Room: "Living Room",
-        Status: "Online",
-        State: "turned on triggered by service switch.turn_on",
-        Registered: true,
-      },
-      {
-        Id: "ca0e280d-7405-4eaa-b16a-9a34a97a869f",
-        IP: "192.168.1.210",
-        Name: "Light Switch-16",
-        Location: "Adrian Home",
-        Room: "Living Room",
-        Status: "Online",
-        State: "turned on triggered by service switch.turn_on",
-        Registered: true,
-      },
-      {
-        Id: "ca0e280d-7405-4eaa-b16a-9a34a97a869f",
-        IP: "192.168.1.211",
-        Name: "Light Switch-17",
-        Location: "Adrian Home",
-        Room: "Living Room",
-        Status: "Online",
-        State: "turned on triggered by service switch.turn_on",
-        Registered: true,
-      },
-    ];
-  }, []);
+function DeviceTable({data}:DeviceProps) {
+
+  
+ 
+  // const data: any = useMemo(() => {
+  //   return [
+  //     {
+  //       Id: "09e12d04-c2a1-4f89-a075-cedb2ef631e6",
+  //       IP: "192.168.1.129",
+  //       Name: "Light Switch-49",
+  //       Location: "Adrian Home",
+  //       Room: "Living Room",
+  //       Status: "Online",
+  //       State: "turned on triggered by service switch.turn_on",
+  //       Registered: true,
+  //     },
+  //     {
+  //       Id: "ca0e280d-7405-4eaa-b16a-9a34a97a869f",
+  //       IP: "192.168.1.210",
+  //       Name: "Light Switch-16",
+  //       Location: "Adrian Home",
+  //       Room: "Living Room",
+  //       Status: "Online",
+  //       State: "turned on triggered by service switch.turn_on",
+  //       Registered: true,
+  //     },
+  //     {
+  //       Id: "ca0e280d-7405-4eaa-b16a-9a34a97a869f",
+  //       IP: "192.168.1.211",
+  //       Name: "Light Switch-17",
+  //       Location: "Adrian Home",
+  //       Room: "Living Room",
+  //       Status: "Online",
+  //       State: "turned on triggered by service switch.turn_on",
+  //       Registered: true,
+  //     },
+  //   ];
+  // }, []);
 
   // Search bar
   const [searchInput, setSearchInput] = useState("");
@@ -88,15 +90,11 @@ function DeviceTable() {
   };
 
   useEffect(() => {
-    // Filter the data based on the search input whenever 'data' changes
-    const filteredData = data.filter((item: any) => {
-      return item.Name.includes(searchInput);
+    // Filter the data based on the search input whenever 'data' or 'searchInput' changes
+    const filteredData = data.filter((item: DeviceRowData) => {
+      return item.Name.toLowerCase().includes(searchInput);
     });
 
-    setFilteredData(filteredData);
-  }, [data, searchInput]);
-
-  useEffect(() => {
     // Sort the filteredData array based on the selected column and sorting direction
     const sortedData = [...filteredData];
     sortedData.sort((a, b) => {
@@ -113,7 +111,7 @@ function DeviceTable() {
     });
 
     setFilteredData(sortedData);
-  }, [sortColumn, sortDirection, filteredData]);
+  }, [data, searchInput, sortColumn, sortDirection]);
 
   // Pagination //
   const [currentPage, setCurrentPage] = useState(1);
@@ -125,8 +123,8 @@ function DeviceTable() {
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll">
-      {/* <div id="utility-bar" className="flex flex-col justify-between">
+    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll ">
+      <div id="utility-bar" className="flex flex-col justify-between">
         <div className="flex">
           <button
             className="hover:border-t hover:border-x hover:rounded-t border-gray-300 p-2 text-blue-600"
@@ -150,7 +148,7 @@ function DeviceTable() {
             onChange={handleSearchInputChange}
           />
         </div>
-      </div> */}
+      </div>
       <table className="table-auto border shadow-lg border-gray-300 bg-gray-50 mb-10">
         <thead>
           <tr className="">
@@ -211,7 +209,7 @@ function DeviceTable() {
           })}
         </tbody>
       </table>
-      {/* <nav id="pagination" className="flex justify-between">
+      <nav id="pagination" className="flex justify-between">
         <div className="flex justify-center items-center">
           Page {currentPage} of {npage}
         </div>
@@ -223,17 +221,7 @@ function DeviceTable() {
             >
               {`< Prev`}
             </button>
-            {numbers.map((n, i) => (
-            <li key={i}>
-              <a
-                href="#"
-                className={` ${currentPage === n ? "active" : ""}`}
-                onClick={(e) => changePage(n)}
-              >
-                {n}
-              </a>
-            </li>
-          ))}
+            
             <button
               onClick={nextPage}
               className="border rounded border-gray-300 p-2"
@@ -242,7 +230,7 @@ function DeviceTable() {
             </button>
           </ul>
         </div>
-      </nav> */}
+      </nav>
     </div>
   );
 
