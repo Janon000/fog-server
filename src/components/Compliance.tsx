@@ -18,9 +18,9 @@ function Compliance({ compliance }: Props) {
           className="flex justify-center items-center bg-[gray-50] shadow mx-10 my-2 p-4 cursor-pointer bg-white "
         >
           <p>{row.Name}</p>
-          <div className="flex mx-5">
-            <p>Version {row.Current}</p>
-            <div className="bg-blue-400 rounded text-white mx-2 ">Upgrade</div>
+          <div className="flex justify-between items-center mx-5">
+            <p className="mr-">Version {row.Current}</p>
+            <div className="bg-blue-400 rounded text-white mx-2 shadow p-1">Upgrade</div>
           </div>
         </div>
       ))}
