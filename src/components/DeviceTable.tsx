@@ -123,7 +123,7 @@ function DeviceTable({data}:DeviceProps) {
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll ">
+    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll  max-w-screen-lg">
       <div id="utility-bar" className="flex flex-col justify-between">
         <div className="flex">
           <button
@@ -165,17 +165,17 @@ function DeviceTable({data}:DeviceProps) {
             <th className="p-4 text-left">Room</th>
             <th className="p-4 text-left">Status</th>
             <th className="p-4 text-left">Device State</th>
-            <th className="p-4 text-left">Management Records</th>
+            <th className="p-4 text-left">Manage</th>
           </tr>
         </thead>
         <tbody className="">
           {records.map((d: any, i: any) => {
             return (
               <tr key={i} className="border border-gray-300 hover:bg-gray-300">
-                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis  ">
+                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px]  ">
                   {d.Id}
                 </td>
-                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis">
+                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px] ">
                   {d.IP}
                 </td>
                 <td className="p-4">{d.Name}</td>

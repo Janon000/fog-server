@@ -43,7 +43,7 @@ function Navbar() {
         </div>
       </div>
       <div id="bigNav" className={`${showNav} sm:block text-white`}>
-        <Link href={"/stats"} className="">
+        <Link href={"/dashboard"} className="">
           <div className="h-12 hover:rounded flex items-center hover:bg-[rgba(255,255,255,0.25)] px-4 py-2 ">
            <Icon height={"20px"} className="mx-1" icon="gridicons:stats" />
             <p>Dashboard</p>

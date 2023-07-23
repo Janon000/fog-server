@@ -1,9 +1,16 @@
-import React from 'react'
+import Device from "@/components/Device"
+import { excelToObject } from "@/libs/ExcelToData"
 
-function page() {
+async function DevicePage({ params }: { params: { id: string } }) {
+
+  const data = await excelToObject()
+  const deviceId = params.id
+
   return (
-    <div className='flex w-full h-full justify-center items-center bg-black'>page</div>
+    <div className="flex w-full h-full justify-center items-center bg-[#091239]">
+      <Device data={data} deviceId={deviceId}/>
+    </div>
   )
 }
 
-export default page
+export default DevicePage

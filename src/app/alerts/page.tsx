@@ -9,7 +9,7 @@ async function Alerts() {
   return (
     <main className="">
       <div className="mx-2">
-        <div className="text-[2.5rem]">Alert Log</div>
+        <div className="text-[2.5rem] text-center">Alert Log</div>
         <AlertTable data={data['Alerts']}/>
       </div>
     </main>

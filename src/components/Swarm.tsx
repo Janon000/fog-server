@@ -20,8 +20,8 @@ function Swarm({ network }: { network?: any }) {
 
   const router = useRouter();
   const handleNodeClick = (data: any) => {
-    //console.log(data);
-    router.push(`/devices/${data['id']}`)
+    //console.log(data.data.Id);
+   router.push(`/devices/${data.data.Id}`)
   };
 
   const theme = {

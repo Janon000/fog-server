@@ -75,8 +75,9 @@ function AlertTable({data}:Props) {
   const npage = Math.ceil(filteredData.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
+
   return (
-    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll ">
+    <div className="animate-appear text-sm mt-[20px] overflow-x-scroll max-w-screen-lg" >
       <div id="utility-bar" className="flex flex-col justify-between">
         <div className="flex">
           <button
@@ -126,10 +127,10 @@ function AlertTable({data}:Props) {
           {records.map((d: any, i: any) => {
             return (
               <tr key={i} className="border border-gray-300 hover:bg-gray-300">
-                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis  ">
+                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px] ">
                   {d.DeviceID}
                 </td>
-                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis">
+                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px] ">
                   {d.TimeStamp}
                 </td>
                 <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis">
