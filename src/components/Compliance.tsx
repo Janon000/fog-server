@@ -15,7 +15,7 @@ function Compliance({ compliance }: Props) {
       {data.map((row: any, i: any) => (
         <div
           key={i}
-          className="flex justify-center items-center bg-[gray-50] shadow mx-10 my-2 p-4 cursor-pointer bg-white "
+          className="flex justify-center items-center bg-[gray-50] shadow mx-10 my-2 p-4 cursor-pointer bg-[#091239] rounded-lg"
         >
           <p>{row.Name}</p>
           <div className="flex justify-between items-center mx-5">

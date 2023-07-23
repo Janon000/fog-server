@@ -11,7 +11,7 @@ function Anomolies({ anomolies }: Props) {
       {data.map((row: any, i: any) => (
         <div
           key={i}
-          className="flex flex-col bg-[gray-50] shadow mx-10 my-2 p-2 cursor-pointer bg-white "
+          className="flex flex-col bg-[#091239] shadow mx-10 my-2 p-2 cursor-pointer rounded-lg  "
         >
           <div className="flex justify-between">
             <p>{row.Name}</p>

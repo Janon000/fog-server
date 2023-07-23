@@ -1,3 +1,4 @@
+import AlertTable from "@/components/AlertTable";
 import { excelToObject } from "@/libs/ExcelToData";
 
 
@@ -6,9 +7,12 @@ async function Alerts() {
   const data = await excelToObject()
 
   return (
-    <>
-      <div>{JSON.stringify(data['Alerts'])}</div>
-    </>
+    <main className="">
+      <div className="mx-2">
+        <div className="text-[2.5rem]">Alert Log</div>
+        <AlertTable data={data['Alerts']}/>
+      </div>
+    </main>
   );
 }
 
