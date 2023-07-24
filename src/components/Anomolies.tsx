@@ -1,9 +1,12 @@
-import React from "react";
+"use client"
+
+import { useRouter } from "next/navigation";
 
 type Props = {
   anomolies?: any;
 };
 function Anomolies({ anomolies }: Props) {
+  const router = useRouter()
   const data = anomolies.filter((row: any) => row.AnalyticModule === "Anomaly");
 
   return (
@@ -11,7 +14,8 @@ function Anomolies({ anomolies }: Props) {
       {data.map((row: any, i: any) => (
         <div
           key={i}
-          className="flex flex-col bg-[#091239] shadow mx-10 my-2 p-2 cursor-pointer rounded-lg  "
+          className="flex flex-col bg-[#091239] shadow mx-10 my-2 p-2 cursor-pointer rounded-lg"
+          onClick={(e)=>router.push(`/devices/${row.DeviceID}`)}
         >
           <div className="flex justify-between">
             <p>{row.Name}</p>

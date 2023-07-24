@@ -1,9 +1,12 @@
+"use client"
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
   compliance?: any;
 };
 function Compliance({ compliance }: Props) {
+  const router = useRouter()
   const data = compliance.filter(
     (row: any) =>
       row.AnalyticModule === "Compliance" &&
@@ -14,6 +17,7 @@ function Compliance({ compliance }: Props) {
     <div className="text-sm overflow-y-scroll ">
       {data.map((row: any, i: any) => (
         <div
+          onClick={(e)=>router.push(`/devices/${row.DeviceID}`)}
           key={i}
           className="flex justify-center items-center bg-[gray-50] shadow mx-10 my-2 p-4 cursor-pointer bg-[#091239] rounded-lg"
         >
