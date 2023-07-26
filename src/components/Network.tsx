@@ -1,5 +1,5 @@
 "use client";
-import { ResponsiveNetwork } from "@nivo/network";
+import { ResponsiveNetwork, } from "@nivo/network";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -819,7 +819,7 @@ function Network({ network }: { network: any[] }) {
       linkDistance={(e) => e.distance}
       centeringStrength={0.3}
       repulsivity={6}
-      nodeSize={(n) => (n.id === "Fog Server" ? 30 : 20)}
+      nodeSize={(n) => (n.id === "Fog Server" ? 30 : 15)}
       activeNodeSize={(n) => 35}
       nodeColor={(e) =>
         e.Classification === "Normal"

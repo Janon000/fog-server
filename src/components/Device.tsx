@@ -19,7 +19,8 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
         <div>Status:{device.Status}</div>
         <div>Registered:{device.Registered}</div>
         <div>Version: {version.Current}</div>
-        
+        <button className="bg-blue-600 text-white rounded p-1 m-1">Check for Update</button>
+        <button className="bg-red-600 text-white rounded p-1 m-1">Reset</button>
       </div>
     </div>
   );
