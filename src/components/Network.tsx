@@ -11,7 +11,7 @@ const CustomLinkComponent2 = ({ link }: LinkProps<any,any>) => {
   // Calculate the arrowhead size
   const arrowSize = 8;
   // Calculate the distance between the arrow and the node
-  const distanceToNode = 5;
+  const distanceToNode = 1;
 
   // Calculate the starting position of the arrowhead
   const startX = link.target.x - (arrowSize + distanceToNode) * Math.cos(angle);
@@ -25,7 +25,7 @@ const CustomLinkComponent2 = ({ link }: LinkProps<any,any>) => {
         y1={link.source.y}
         x2={link.target.x}
         y2={link.target.y}
-        stroke={"white"}
+        stroke={"gray"}
         strokeWidth={link.thickness}
         strokeLinecap="round"
       />
@@ -36,7 +36,7 @@ const CustomLinkComponent2 = ({ link }: LinkProps<any,any>) => {
         } L${startX},${startY} L${
           startX - arrowSize * Math.cos(angle + Math.PI / 6)
         },${startY - arrowSize * Math.sin(angle + Math.PI / 6)}`}
-        fill={"white"}
+        fill={"gray"}
         stroke="none"
       />
     </>
