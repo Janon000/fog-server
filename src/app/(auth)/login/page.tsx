@@ -9,9 +9,9 @@ function Login() {
       >
         <p>Please Sign In</p>
         <input className="p-2 border border-gray-300 text-gray-900 my-2 rounded-sm" placeholder="Email Addres"/>
-        <input className="p-2 border border-gray-300 text-gray-900 my-2 rounded-sm" placeholder="Password"/>
+        <input type="password" className="p-2 border border-gray-300 text-gray-900 my-2 rounded-sm" placeholder="Password"/>
         <div className="flex mb-2"><input type="checkbox" className="mx-2"/><p>Remember Me</p></div>
-        <Link href={'/dashboard'} className="p-3 cursor-pointer bg-blue-600 rounded text-white">Sign in</Link>
+        <Link href={'/alerts'} className="p-3 cursor-pointer bg-blue-600 rounded text-white">Sign in</Link>
       </div>
       <p className="mt-5 text-gray-500">© 2017-2023</p>
     </div>
