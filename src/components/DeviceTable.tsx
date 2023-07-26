@@ -3,6 +3,7 @@
 import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { GreenLight, RedLight } from "./Indicators";
 import SortIcon from "./SortIcon";
+import Link from "next/link";
 
 type DeviceProps = {
   data?: any;
@@ -122,6 +123,19 @@ function DeviceTable({data}:DeviceProps) {
   const npage = Math.ceil(filteredData.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
+  // Text copy //
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = (text:string) => {
+    // Copy the full text to the clipboard
+    navigator.clipboard.writeText(text);
+    setIsCopied(true);
+
+    // Reset the "Copied" status after a brief delay (e.g., 3 seconds)
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
+  };
   return (
     <div className="animate-appear text-sm mt-[20px] overflow-x-scroll  max-w-screen-lg">
       <div id="utility-bar" className="flex flex-col justify-between">
@@ -153,18 +167,18 @@ function DeviceTable({data}:DeviceProps) {
         <thead>
           <tr className="">
             <th
-                className="p-4 flex items-center justify-between"
+                className="p-4 flex items-center justify-between cursor-pointer"
                 onClick={() => handleHeaderClick("Id")}
               >
                 Device Id
-                <SortIcon />
+                {/* <SortIcon /> */}
               </th>             
-            <th className="p-4 text-left">IP</th>
-            <th className="p-4 text-left">Name</th>
-            <th className="p-4 text-left">Location</th>
-            <th className="p-4 text-left">Room</th>
-            <th className="p-4 text-left">Status</th>
-            <th className="p-4 text-left">Device State</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("IP")}>IP</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Name")}>Name</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Location")}>Location</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Room")}>Room</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Status")}>Status</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("State")}>Device State</th>
             <th className="p-4 text-left">Manage</th>
           </tr>
         </thead>
@@ -172,7 +186,9 @@ function DeviceTable({data}:DeviceProps) {
           {records.map((d: any, i: any) => {
             return (
               <tr key={i} className="border border-gray-300 hover:bg-gray-300">
-                <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px]  ">
+                <td title={isCopied ? "Copied!" : d.Id} 
+                onClick={(e)=>handleCopyClick(d.Id)}
+                className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px]  ">
                   {d.Id}
                 </td>
                 <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px] ">
@@ -190,18 +206,18 @@ function DeviceTable({data}:DeviceProps) {
                 <td className="p-4">{d.State}</td>
                 <td className="p-4 h-4">
                   <div className="flex justify-between">
-                    <button
-                      onClick={(e) => ""}
+                    {/* <Link
+                      href={`/devices/${d.Id}/events`}
                       className="text-white bg-blue-500 p-2 rounded"
                     >
                       Events
-                    </button>
-                    <button
-                      onClick={(e) => ""}
+                    </Link> */}
+                    <Link
+                      href={`/devices/${d.Id}/alerts`}
                       className="text-white bg-blue-500 p-2 rounded"
                     >
                       Alerts
-                    </button>
+                    </Link>
                   </div>
                 </td>
               </tr>
