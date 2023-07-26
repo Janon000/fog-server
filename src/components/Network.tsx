@@ -1,7 +1,61 @@
 "use client";
-import { ResponsiveNetwork, } from "@nivo/network";
+import { LinkProps, ResponsiveNetwork,  } from "@nivo/network";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+
+
+const CustomLinkComponent2 = ({ link }: LinkProps<any,any>) => {
+  // Calculate the angle of the link
+  const angle = Math.atan2(link.target.y - link.source.y, link.target.x - link.source.x);
+  // Calculate the arrowhead size
+  const arrowSize = 8;
+  // Calculate the distance between the arrow and the node
+  const distanceToNode = 5;
+
+  // Calculate the starting position of the arrowhead
+  const startX = link.target.x - (arrowSize + distanceToNode) * Math.cos(angle);
+  const startY = link.target.y - (arrowSize + distanceToNode) * Math.sin(angle);
+
+  return (
+    <>
+      {/* Render the link */}
+      <line
+        x1={link.source.x}
+        y1={link.source.y}
+        x2={link.target.x}
+        y2={link.target.y}
+        stroke={"white"}
+        strokeWidth={link.thickness}
+        strokeLinecap="round"
+      />
+      {/* Render the arrowhead at the target start */}
+      <path
+        d={`M${startX - arrowSize * Math.cos(angle - Math.PI / 6)},${
+          startY - arrowSize * Math.sin(angle - Math.PI / 6)
+        } L${startX},${startY} L${
+          startX - arrowSize * Math.cos(angle + Math.PI / 6)
+        },${startY - arrowSize * Math.sin(angle + Math.PI / 6)}`}
+        fill={"white"}
+        stroke="none"
+      />
+    </>
+  );
+};
+
+// const CustomLinkComponent = ({ link }: LinkProps<Node, Link>) => (
+//   <line
+//       x1={link.source.x}
+//       y1={link.source.y}
+//       x2={link.target.x}
+//       y2={link.target.y}
+//       stroke={link.color}
+//       strokeWidth={link.thickness}
+//       strokeDasharray="5 7"
+//       strokeLinecap="round"
+      
+//   />
+// )
 
 function Network({ network }: { network: any[] }) {
   const router = useRouter();
@@ -835,10 +889,12 @@ function Network({ network }: { network: any[] }) {
       }}
       linkThickness={(n) => 2 + 2 * n.target.data.height}
       linkBlendMode="multiply"
+      linkComponent={CustomLinkComponent2}
       motionConfig="wobbly"
       onMouseEnter={(n, e) => n.data.Description ? setTest(n.data.Description) : setTest("")}
       onMouseLeave={(n, e) => setTest("")}
       onClick={(n,e)=>n.data.DeviceID !== "fog-server-1" ? router.push(`/devices/${n.data.DeviceID}`) : ""}
+      
     />
   );
 
