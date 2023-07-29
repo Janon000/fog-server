@@ -17,7 +17,7 @@ function AlertTable({data}:Props) {
   const [sortColumn, setSortColumn] = useState<any>(""); // Column name to sort
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc"); // Sorting direction: "asc" or "desc"
 
-  const handleHeaderClick = (column: keyof DeviceRowData) => {
+  const handleHeaderClick = (column: keyof any) => {
     // If the same column is clicked, toggle the sorting direction
     if (column === sortColumn) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
@@ -108,19 +108,19 @@ function AlertTable({data}:Props) {
           <tr className="">
             <th
                 className="p-4 flex items-center justify-between"
-                onClick={() => handleHeaderClick("Id")}
+                onClick={() => handleHeaderClick("DeviceID")}
               >
                 Device Id
                 <SortIcon />
               </th>        
-            <th className="p-4 text-left">Timestamp</th>     
-            <th className="p-4 text-left">IP</th>
-            <th className="p-4 text-left">Name</th>
-            <th className="p-4 text-left">Location</th>
-            <th className="p-4 text-left">Room</th>
-            <th className="p-4 text-left">Status</th>
-            <th className="p-4 text-left">AnalyticModule</th>
-            <th className="p-4 text-left">AlertMessage</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("TimeStamp")}>Timestamp</th>     
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("TimeStamp")}>IP</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Name")}>Name</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Location")}>Location</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Room")}>Room</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Status")}>Status</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("AnalyticModule")}>AnalyticModule</th>
+            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("AlertMessage")}>AlertMessage</th>
           </tr>
         </thead>
         <tbody className="">
