@@ -20,10 +20,7 @@ const headers = [
   "Registered",
 ];
 
-function DeviceTable({data}:DeviceProps) {
-
-  
- 
+function DeviceTable({ data }: DeviceProps) {
   // const data: any = useMemo(() => {
   //   return [
   //     {
@@ -126,7 +123,7 @@ function DeviceTable({data}:DeviceProps) {
   // Text copy //
   const [isCopied, setIsCopied] = useState(false);
 
-  const handleCopyClick = (text:string) => {
+  const handleCopyClick = (text: string) => {
     // Copy the full text to the clipboard
     navigator.clipboard.writeText(text);
     setIsCopied(true);
@@ -167,18 +164,48 @@ function DeviceTable({data}:DeviceProps) {
         <thead>
           <tr className="">
             <th
-                className="p-4 flex items-center justify-between cursor-pointer"
-                onClick={() => handleHeaderClick("Id")}
-              >
-                Device Id
-                {/* <SortIcon /> */}
-              </th>             
-            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("IP")}>IP</th>
-            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Name")}>Name</th>
-            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Location")}>Location</th>
-            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Room")}>Room</th>
-            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("Status")}>Status</th>
-            <th className="p-4 text-left cursor-pointer" onClick={() => handleHeaderClick("State")}>Device State</th>
+              className="p-4 flex items-center justify-between cursor-pointer"
+              onClick={() => handleHeaderClick("Id")}
+            >
+              Device Id
+              {/* <SortIcon /> */}
+            </th>
+            <th
+              className="p-4 text-left cursor-pointer"
+              onClick={() => handleHeaderClick("IP")}
+            >
+              IP
+            </th>
+            <th
+              className="p-4 text-left cursor-pointer"
+              onClick={() => handleHeaderClick("Name")}
+            >
+              Name
+            </th>
+            <th
+              className="p-4 text-left cursor-pointer"
+              onClick={() => handleHeaderClick("Location")}
+            >
+              Location
+            </th>
+            <th
+              className="p-4 text-left cursor-pointer"
+              onClick={() => handleHeaderClick("Room")}
+            >
+              Room
+            </th>
+            <th
+              className="p-4 text-left cursor-pointer"
+              onClick={() => handleHeaderClick("Status")}
+            >
+              Status
+            </th>
+            <th
+              className="p-4 text-left cursor-pointer"
+              onClick={() => handleHeaderClick("State")}
+            >
+              Device State
+            </th>
             <th className="p-4 text-left">Manage</th>
           </tr>
         </thead>
@@ -186,9 +213,11 @@ function DeviceTable({data}:DeviceProps) {
           {records.map((d: any, i: any) => {
             return (
               <tr key={i} className="border border-gray-300 hover:bg-gray-300">
-                <td title={isCopied ? "Copied!" : d.Id} 
-                onClick={(e)=>handleCopyClick(d.Id)}
-                className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px]  ">
+                <td
+                  title={isCopied ? "Copied!" : d.Id}
+                  onClick={(e) => handleCopyClick(d.Id)}
+                  className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px]  "
+                >
                   {d.Id}
                 </td>
                 <td className="p-4 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[120px] ">
@@ -198,10 +227,15 @@ function DeviceTable({data}:DeviceProps) {
                 <td className="p-4">{d.Location}</td>
                 <td className="p-4">{d.Room}</td>
                 <td className="p-4">
-                  <div className="flex items-center">
-                    <p>{d.Status}</p>
-                    <GreenLight />
-                  </div>
+                  {d.Status === "Online" ? (
+                    <div className="flex items-center">
+                      {d.Status} <GreenLight />
+                    </div>
+                  ) : (
+                    <div className="flex items-center">
+                      {d.Status} <RedLight />
+                    </div>
+                  )}
                 </td>
                 <td className="p-4">{d.State}</td>
                 <td className="p-4 h-4">
@@ -237,7 +271,7 @@ function DeviceTable({data}:DeviceProps) {
             >
               {`< Prev`}
             </button>
-            
+
             <button
               onClick={nextPage}
               className="border rounded border-gray-300 p-2"
