@@ -87,10 +87,20 @@ function DeviceTable({ data }: DeviceProps) {
     setFilteredData(filteredData);
   };
 
+  const [registered, setRegistered] = useState(true);
+  
+  const handleRegisteredClick = (event: any) => {
+    const regState = event.target.name === "Registered" ? true : false
+    console.log(regState)
+    setRegistered(regState);
+  };
+
   useEffect(() => {
     // Filter the data based on the search input whenever 'data' or 'searchInput' changes
     const filteredData = data.filter((item: DeviceRowData) => {
-      return item.Name.toLowerCase().includes(searchInput);
+      const isMatchingSearch = item.Name.toLowerCase().includes(searchInput);
+      const isMatchingRegistration =  registered === JSON.parse(item.Registered as any);;
+      return isMatchingSearch && isMatchingRegistration;
     });
 
     // Sort the filteredData array based on the selected column and sorting direction
@@ -109,7 +119,7 @@ function DeviceTable({ data }: DeviceProps) {
     });
 
     setFilteredData(sortedData);
-  }, [data, searchInput, sortColumn, sortDirection]);
+  }, [data, searchInput, sortColumn, sortDirection, registered]);
 
   // Pagination //
   const [currentPage, setCurrentPage] = useState(1);
@@ -138,14 +148,17 @@ function DeviceTable({ data }: DeviceProps) {
       <div id="utility-bar" className="flex flex-col justify-between">
         <div className="flex">
           <button
+           name="Registered"
             className="hover:border-t hover:border-x hover:rounded-t border-gray-300 p-2 text-blue-600"
-            onClick={(e) => ""}
+            onClick={(e) => handleRegisteredClick(e)}
+           
           >
             Registered
           </button>
           <button
+            name="Unregistered"
             className="hover:border-t hover:border-x hover:rounded-t border-gray-300 p-2 text-blue-600"
-            onClick={(e) => ""}
+            onClick={(e) => handleRegisteredClick(e)}
           >
             Unregistered
           </button>

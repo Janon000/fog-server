@@ -80,18 +80,6 @@ function AlertTable({data}:Props) {
     <div className="animate-appear text-sm mt-[20px] overflow-x-scroll max-w-screen-lg" >
       <div id="utility-bar" className="flex flex-col justify-between">
         <div className="flex">
-          <button
-            className="hover:border-t hover:border-x hover:rounded-t border-gray-300 p-2 text-blue-600"
-            onClick={(e) => ""}
-          >
-            Registered
-          </button>
-          <button
-            className="hover:border-t hover:border-x hover:rounded-t border-gray-300 p-2 text-blue-600"
-            onClick={(e) => ""}
-          >
-            Unregistered
-          </button>
         </div>
         <div className="bg-gray-50 border-t border-x">
           <input
