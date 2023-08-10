@@ -19,7 +19,7 @@ async function Stats() {
         </div>
         <div className=" shadow-lg rounded-lg h-[300px] w-[500px] m-5 p-2 flex flex-col bg-[#0E2162]">
           <div className="w-full text-center font-semibold">
-            Recent Anomolies
+            Recent Anomalies
           </div>
           <Anomolies anomolies={data["Alerts"]} />
         </div>
