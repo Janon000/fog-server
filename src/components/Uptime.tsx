@@ -1,5 +1,6 @@
 "use client";
 import { ResponsiveBar } from "@nivo/bar";
+import { useRouter } from "next/navigation";
 
 const data = [
   {
@@ -72,7 +73,8 @@ type Props = {
 };
 
 export const Uptime = ({ uptime }: Props) => {
-   
+  const router = useRouter();
+
   const MyResponsiveBar = () => (
     <ResponsiveBar
       data={uptime}
@@ -168,6 +170,7 @@ export const Uptime = ({ uptime }: Props) => {
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={["#4CBB17", " #FFC300 ", "#FF0000"]}
+      onClick={(n,e)=>router.push(`/devices/${n.data.Id}`)}
       // defs={[
       //   {
       //     id: "dots",
@@ -265,7 +268,7 @@ export const Uptime = ({ uptime }: Props) => {
     />
   );
   return (
-    <div className="h-[300px] w-[500px]">
+    <div className="h-[300px] w-[500px] cursor-pointer">
       <MyResponsiveBar />
     </div>
   );
