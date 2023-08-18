@@ -3,6 +3,7 @@ import Compliance from "@/components/Compliance";
 import { Uptime } from "@/components/Uptime";
 import { excelToObject } from "@/libs/ExcelToData";
 import Network from "@/components/Network";
+import Unregistered from "@/components/Unregistered";
 
 async function Stats() {
   const data = await excelToObject( );
@@ -26,6 +27,10 @@ async function Stats() {
         <div className=" shadow-lg rounded-lg h-[300px] w-[500px] m-5 p-2 flex flex-col bg-[#0E2162] ">
           <div className="w-full text-center font-semibold">Compliance</div>
           <Compliance compliance={data["Alerts"]} />
+        </div>
+        <div className=" shadow-lg rounded-lg h-[300px] w-[500px] m-5 p-2 flex flex-col bg-[#0E2162] ">
+          <div className="w-full text-center font-semibold">Unregistered</div>
+          <Unregistered unreg={data["Devices"]} />
         </div>
       </div>
     </div>

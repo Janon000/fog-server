@@ -1,13 +1,14 @@
 "use client";
-import { LinkProps, ResponsiveNetwork,  } from "@nivo/network";
+import { LinkProps, ResponsiveNetwork } from "@nivo/network";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-
-
-const CustomLinkComponent2 = ({ link }: LinkProps<any,any>) => {
+const CustomLinkComponent2 = ({ link }: LinkProps<any, any>) => {
   // Calculate the angle of the link
-  const angle = Math.atan2(link.target.y - link.source.y, link.target.x - link.source.x);
+  const angle = Math.atan2(
+    link.target.y - link.source.y,
+    link.target.x - link.source.x
+  );
   // Calculate the arrowhead size
   const arrowSize = 8;
   // Calculate the distance between the arrow and the node
@@ -53,7 +54,7 @@ const CustomLinkComponent2 = ({ link }: LinkProps<any,any>) => {
 //       strokeWidth={link.thickness}
 //       strokeDasharray="5 7"
 //       strokeLinecap="round"
-      
+
 //   />
 // )
 
@@ -63,7 +64,7 @@ function Network({ network }: { network: any[] }) {
     classification: "",
     description: "",
   });
-  const [test, setTest] = useState("")
+  const [test, setTest] = useState("");
   const itemsToMap = network.slice(1);
   const links = itemsToMap.map((node: any) => {
     return {
@@ -891,10 +892,15 @@ function Network({ network }: { network: any[] }) {
       linkBlendMode="multiply"
       linkComponent={CustomLinkComponent2}
       motionConfig="wobbly"
-      onMouseEnter={(n, e) => n.data.Description ? setTest(n.data.Description) : setTest("")}
+      onMouseEnter={(n, e) =>
+        n.data.Description ? setTest(n.data.Description) : setTest("")
+      }
       onMouseLeave={(n, e) => setTest("")}
-      onClick={(n,e)=>n.data.DeviceID !== "fog-server-1" ? router.push(`/devices/${n.data.DeviceID}`) : ""}
-      
+      onClick={(n, e) =>
+        n.data.DeviceID !== "fog-server-1"
+          ? router.push(`/devices/${n.data.DeviceID}`)
+          : ""
+      }
     />
   );
 
@@ -902,6 +908,20 @@ function Network({ network }: { network: any[] }) {
     <div className="h-[250px] cursor-pointer border flex relative justify-center rounded border-green-500">
       <MyResponsiveNetwork />
       <div className=" mx-1 absolute bottom-0 left-0">{test}</div>
+      <div className=" mx-1 mb-1 absolute bottom-0 right-0 text-xs">
+        <div className="flex">
+          <div className="h-5 w-5 bg-[#42A422]"></div>
+          <p className="ml-3">Online</p>
+        </div>
+        <div className="flex">
+          <div className="h-5 w-5 bg-[#FF0000]"></div>
+          <p className="ml-3">Offline</p>
+        </div>
+        <div className="flex">
+          <div className="h-5 w-5 bg-[#FFC300]"></div>
+          <p className="ml-3">Anomaly</p>
+        </div>
+      </div>
     </div>
   );
 }
