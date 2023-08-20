@@ -170,7 +170,7 @@ export const Uptime = ({ uptime }: Props) => {
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={["#4CBB17", " #FFC300 ", "#FF0000"]}
-      onClick={(n,e)=>router.push(`/devices/${n.data.Id}`)}
+      onClick={(n,e)=>router.push(`/devices/${n.data.Id}#uptime`)}
       // defs={[
       //   {
       //     id: "dots",

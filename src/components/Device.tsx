@@ -10,6 +10,7 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
   );
   const uptime = data["Uptime"].find((item: any) => item.Id === deviceId);
 
+
   return (
     <div className="flex flex-wrap justify-center">
       <div className="m-5 bg-[#0E2162] h-[400px] w-[400px] rounded-lg flex flex-col justify-center items-center text-white">
@@ -35,9 +36,11 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
           </button>
         </div>
       </div>
-      <div className="m-5 bg-[#0E2162] h-[400px] w-[845px] rounded-lg flex flex-col justify-center items-center text-white">
-        Uptime
+      <div id="uptime" className="m-5 bg-[#0E2162] h-[400px] w-[845px] rounded-lg flex flex-col justify-center items-center text-white">
+        <p>Uptime</p>
         <Uptime uptime={[uptime]} />
+        <p className="text-green-500">Uptime %{uptime['UpPercent']}</p>
+        <p className="text-red-500">Downtime %{uptime['DownPercent']}</p>
       </div>
     </div>
   );
