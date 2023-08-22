@@ -23,7 +23,7 @@ function Compliance({ compliance }: Props) {
         >
           <p>{row.Name}</p>
           <div className="flex justify-between items-center mx-5">
-            <p className="mr-">Version {row.Current}</p>
+            <p className="mr-">Firmware Out of Date</p>
             <div className="bg-blue-400 rounded text-white mx-2 shadow p-1">Upgrade</div>
           </div>
         </div>
