@@ -10,7 +10,8 @@ const CustomLinkComponent2 = ({ link }: LinkProps<any, any>) => {
     link.target.x - link.source.x
   );
   // Calculate the arrowhead size
-  const arrowSize = 8;
+  
+  const arrowSize = 8
   // Calculate the distance between the arrow and the node
   const distanceToNode = 1;
 
@@ -64,17 +65,19 @@ function Network({ network }: { network: any[] }) {
     classification: "",
     description: "",
   });
+  //console.log(network)
   const [test, setTest] = useState("");
   const itemsToMap = network.slice(1);
+  //console.log(itemsToMap)
   const links = itemsToMap.map((node: any) => {
     return {
       source: node.TargetDeviceName,
       target: node.Name,
-      distance: 85,
+      distance: node.Name == "Fog Server2" ? 100:60,
     };
   });
   const nodeData = { nodes: network, links: links };
-  //console.log(network)
+  console.log(nodeData)
 
   const data = {
     nodes: [
@@ -874,7 +877,7 @@ function Network({ network }: { network: any[] }) {
       linkDistance={(e) => e.distance}
       centeringStrength={0.3}
       repulsivity={6}
-      nodeSize={(n) => (n.id === "Fog Server" ? 30 : 15)}
+      nodeSize={(n) => (n.id.startsWith('Fog') ? 30 : 10)}
       activeNodeSize={(n) => 35}
       nodeColor={(e) =>
         e.Classification === "Normal"
@@ -908,7 +911,7 @@ function Network({ network }: { network: any[] }) {
     <div className="h-[250px] cursor-pointer border flex relative justify-center rounded border-green-500">
       <MyResponsiveNetwork />
       <div className=" mx-1 absolute bottom-0 left-0">{test}</div>
-      <div className=" mx-1 mb-1 absolute bottom-0 right-0 text-xs">
+      <div className=" mx-1 mb-1 absolute top-0 right-0 text-xs">
         <div className="flex">
           <div className="h-5 w-5 bg-[#42A422]"></div>
           <p className="ml-3">Online</p>

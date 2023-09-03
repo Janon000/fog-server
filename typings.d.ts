@@ -4,6 +4,9 @@ type DeviceRowData = {
     Name: string;
     Location: string;
     Room: string;
+    Latency:string;
+    CPU: string;
+    Type: string;
     Status: string;
     State: string;
     Registered: boolean;

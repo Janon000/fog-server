@@ -17,6 +17,7 @@ function Swarm({ network }: { network?: any }) {
   const groups = [
     ...new Set(data.map((device: { [key: string]: string }) => device.Room)),
   ] as string[];
+  console.log("??????")
 
   const router = useRouter();
   const handleNodeClick = (data: any) => {
