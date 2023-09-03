@@ -911,7 +911,7 @@ function Network({ network }: { network: any[] }) {
     <div className="h-[250px] cursor-pointer border flex relative justify-center rounded border-green-500">
       <MyResponsiveNetwork />
       <div className=" mx-1 absolute bottom-0 left-0">{test}</div>
-      <div className=" mx-1 mb-1 absolute top-0 right-0 text-xs">
+      <div className=" mx-1 mb-1 absolute bottom-0 right-0 text-xs">
         <div className="flex">
           <div className="h-5 w-5 bg-[#42A422]"></div>
           <p className="ml-3">Online</p>
