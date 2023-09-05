@@ -5,7 +5,7 @@ import { Uptime } from "./Uptime";
 
 function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
   const device = data["Devices"].find((item: any) => item.Id === deviceId);
-  //console.log(data["Devices"])
+  console.log(device)
   const version = data["Alerts"].find(
     (item: any) => item.DeviceID === deviceId
   );
@@ -15,7 +15,7 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
     <div className="flex flex-wrap justify-center">
       <div className="m-5 bg-[#0E2162] h-[400px] w-[400px] rounded-lg flex flex-col justify-center items-center text-white">
         <div className="">
-          <Icon height={"100px"} className="mx-1" icon="ion:bulb-outline" />
+          {device.Name.startsWith("Fog") ? (<Icon height={"100px"} className="mx-1" icon="uil:server" />) : (<Icon height={"100px"} className="mx-1" icon="ion:bulb-outline" />)}
         </div>
         <div>Name: {device.Name}</div>
         <div>IP: {device.IP}</div>

@@ -8,7 +8,7 @@ async function page({ params }: { params: { id: string } }) {
  const data = await excelToObject()
  const idData = data['Alerts']
  const test = idData.filter((row)=>row.DeviceID === params.id)
- console.log(test)
+ //console.log(test)
 
   return (
     <main className="">
