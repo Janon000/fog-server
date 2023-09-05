@@ -67,7 +67,7 @@ function Network({ network }: { network: any[] }) {
   });
   //console.log(network)
   const [test, setTest] = useState("");
-  const itemsToMap = network.slice(1);
+  const itemsToMap = network.slice();
   //console.log(itemsToMap)
   const links = itemsToMap.map((node: any) => {
     return {
@@ -77,7 +77,7 @@ function Network({ network }: { network: any[] }) {
     };
   });
   const nodeData = { nodes: network, links: links };
-  console.log(nodeData)
+  //console.log(nodeData)
 
   const data = {
     nodes: [
@@ -900,7 +900,7 @@ function Network({ network }: { network: any[] }) {
       }
       onMouseLeave={(n, e) => setTest("")}
       onClick={(n, e) =>
-        n.data.DeviceID !== "fog-server-1"
+        n.data.DeviceID !== "fog-server-11"
           ? router.push(`/devices/${n.data.DeviceID}`)
           : ""
       }
