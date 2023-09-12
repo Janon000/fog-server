@@ -4,8 +4,9 @@ import React from "react";
 
 type Props = {
   compliance?: any;
+  type?: any;
 };
-function Compliance({ compliance }: Props) {
+function Compliance({ compliance, type }: Props) {
   const router = useRouter()
   const data = compliance.filter(
     (row: any) =>
