@@ -23,7 +23,7 @@ async function Stats() {
           <Uptime uptime={data["Uptime"]} />
         </div>
         <div className=" shadow-lg rounded-lg h-[300px] w-[500px] m-5 p-2 flex flex-col bg-[#0E2162] ">
-          <div className="w-full text-center font-semibold">Anomolies</div>
+          <div className="w-full text-center font-semibold">Anomalies</div>
           <Pie anomolies={data["Alerts"]}/>
         </div>
         <div className=" shadow-lg rounded-lg h-[300px] w-[500px] m-5 p-2 flex flex-col bg-[#0E2162] ">
@@ -31,7 +31,7 @@ async function Stats() {
           <PieComply compliance={data["Alerts"]} />
         </div>
         <div className=" shadow-lg rounded-lg h-[300px] w-[500px] m-5 p-2 flex flex-col bg-[#0E2162] ">
-          <div className="w-full text-center font-semibold">Unregistered</div>
+          <div className="w-full text-center font-semibold">Devices</div>
           <PieUnreg unreg={data["Devices"]} />
         </div>
         
