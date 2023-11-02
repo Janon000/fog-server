@@ -17,7 +17,7 @@ interface PieProps {
 }
 
 const Pie: FC<PieProps> = ({ unreg }: PieProps) => {
-  console.log(unreg);
+  //console.log(unreg);
   const [selectPriority, setSelectPriority] = useState("");
   // Create an object to count priority occurrences
   const deviceCounts: any = { Server: 0, Node: 0, Unregistered: 0 };
@@ -37,7 +37,7 @@ const Pie: FC<PieProps> = ({ unreg }: PieProps) => {
     }
   }
 
-  console.log(deviceCounts);
+  //console.log(deviceCounts);
   // Transform the counts object into the desired format
   const data2 = Object.keys(deviceCounts).map((priority) => ({
     color: deviceColorMap[priority] || "hsl(120, 100%, 50%)",
@@ -50,7 +50,7 @@ const Pie: FC<PieProps> = ({ unreg }: PieProps) => {
 
   const handlePieClick = (d: any, e: any) => {
     e.stopPropagation();
-    console.log(d);
+    //console.log(d);
     setSelectPriority(d.id as string);
   };
   const MyResponsivePie = () => (

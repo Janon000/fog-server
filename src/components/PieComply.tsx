@@ -50,7 +50,7 @@ const Pie: FC<PieProps> = ({ compliance }: PieProps) => {
 
   const handlePieClick = (d:any, e:any)=>{
     e.stopPropagation()
-    console.log(d)
+    // console.log(d)
     setSelectPriority(d.id as string)
   }
   const MyResponsivePie = () => (

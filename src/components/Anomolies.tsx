@@ -17,7 +17,7 @@ function Anomolies({ anomolies, type }: Props) {
       return row.AnalyticModule === "Anomaly";
     }
   });
-  console.log(data);
+  //console.log(data);
   return (
     <div className="text-sm overflow-y-scroll w-full ">
       {data.map((row: any, i: any) => (

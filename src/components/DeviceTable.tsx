@@ -91,7 +91,7 @@ function DeviceTable({ data }: DeviceProps) {
   
   const handleRegisteredClick = (event: any) => {
     const regState = event.target.name === "Registered" ? true : false
-    console.log(regState)
+    //console.log(regState)
     setRegistered(regState);
   };
 

@@ -11,6 +11,7 @@ import PieUnreg from "@/components/PieUnreg";
 
 async function Stats() {
   const data = await excelToObject( );
+  
   return (
     <div className="h-full bg-[#0A133A]">
       <div className="flex flex-wrap justify-center text-[#DDDFE3]">
