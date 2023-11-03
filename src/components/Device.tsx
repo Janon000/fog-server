@@ -28,7 +28,7 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
           ) : device.Name.startsWith("Cloud") ? (
             <Icon height={"100px"} className="mx-1" icon="ic:twotone-cloud" />
           ) : (
-            <Icon height={"100px"} className="mx-1" icon="ion:bulb-outline" />
+            <Icon height={"100px"} className="mx-1" icon="ri:device-line" />
           )}
         </div>
         <div className="grid grid-cols-2 gap-x-4">
@@ -36,8 +36,13 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
           <div>{device.Name}</div>
           <div className="text-right font-bold">IP:</div>
           <div>{device.IP}</div>
-          <div className="text-right font-bold">Registered:</div>
-          <div>{device.Registered}</div>
+          {!device.Name.startsWith("Cloud") && (
+            <>
+              <div className="text-right font-bold">Registered:</div>
+              <div>{device.Registered}</div>
+            </>
+          )}
+
           <div className="text-right font-bold">Layer:</div>
           <div>{device.Layer}</div>
           <div className="text-right font-bold">Location:</div>
@@ -52,15 +57,23 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
           <div>{device.Type}</div>
           <div className="text-right font-bold">{`Latency (ms):`}</div>
           <div>{device.Latency}</div>
-          <div className="text-right font-bold">Version:</div>
-          <div>{alerts ? alerts.Current : "Unknown"}</div>
+          {!device.Name.startsWith("Cloud") && (
+            <>
+              <div className="text-right font-bold">Version:</div>
+              <div>{alerts ? alerts.Current : "Unknown"}</div>
+            </>
+          )}
         </div>
-        <button className="bg-blue-600 text-white rounded p-1 m-1">
-          Check for Update
-        </button>
-        <button className="bg-red-600  text-white rounded p-1 m-1">
-          Reset
-        </button>
+        {!device.Name.startsWith("Cloud") && (
+          <>
+            <button className="bg-blue-600 text-white rounded p-1 m-1">
+              Check for Update
+            </button>
+            <button className="bg-red-600  text-white rounded p-1 m-1">
+              Reset
+            </button>
+          </>
+        )}
       </div>
       <div className="m-5 bg-[#0E2162] h-[460px] w-[400px] rounded-lg flex flex-col items-center text-white">
         {device.Name.startsWith("Cloud") ? (
@@ -72,15 +85,19 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
               <div className="py-1">Remote Control: Running </div>
             </div>
           </div>
-        ) : device.Name.startsWith("Fog") && (<div className="">
-        <div className="my-5 text-center">Services</div>
-        <div className=" bg-[#091239] text-sm w-[300px] shadow p-2 rounded divide-y-2 divide-slate-400/25 ">
-          <div className="py-1" >Data Processing: Running</div>
-          <div className="py-1">Automation: Running </div>
-          <div className="py-1">Device Control: Running </div>
-        </div>
-      </div>)}
-        <div className="my-5">Anomoly History</div>
+        ) : (
+          device.Name.startsWith("Fog") && (
+            <div className="">
+              <div className="my-5 text-center">Services</div>
+              <div className=" bg-[#091239] text-sm w-[300px] shadow p-2 rounded divide-y-2 divide-slate-400/25 ">
+                <div className="py-1">Data Processing: Running</div>
+                <div className="py-1">Automation: Running </div>
+                <div className="py-1">Device Control: Running </div>
+              </div>
+            </div>
+          )
+        )}
+        <div className="my-5">Anomaly History</div>
         <div className=" bg-[#091239] text-sm w-[300px] shadow  p-2 rounded divide-y-4 divide-slate-400/25">
           {alerts && alerts.AnalyticModule === "Anomaly" ? (
             <div>
