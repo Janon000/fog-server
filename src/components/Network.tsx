@@ -76,7 +76,8 @@ const CustomNodeComponent = ({ node, animated }: NodeProps<any>) => {
       <>
         <Icon
           icon="icon-park-solid:server"
-          transform={`translate(${node.x - 12},${node.y - 18})`}
+          x={node.x - 12}
+          y={node.y - 18}
           className={`text-[25px] hover:text-[40px] transition-all duration-300 text-[#42A422] absolute`}
           onMouseEnter={(event) =>
             showTooltipFromEvent(
@@ -102,7 +103,8 @@ const CustomNodeComponent = ({ node, animated }: NodeProps<any>) => {
     return (
       <Icon
         icon="ic:twotone-cloud"
-        transform={`translate(${node.x - 12},${node.y - 18})`}
+        x={node.x - 12}
+        y={node.y - 18}
         className={`text-[40px] hover:text-green-400 transition-all duration-300 text-[#42A422]`}
         onMouseEnter={(event) =>
           showTooltipFromEvent(
