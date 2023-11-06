@@ -18,7 +18,7 @@ function Device({ data, deviceId }: { data?: any; deviceId?: string }) {
   const selectedClass = alerts
     ? priorityClasses[alerts.Priority] || "bg-red-600"
     : "bg-red-600";
-
+  console.log(deviceId,device )
   return (
     <div className="flex flex-wrap justify-center">
       <div className="m-5 py-3 bg-[#0E2162] h-[460px] w-[400px] rounded-lg flex flex-col justify-center items-center text-white">

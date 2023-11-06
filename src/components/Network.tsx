@@ -141,11 +141,11 @@ function Network({ network }: { network: any[] }) {
     return {
       source: node.TargetDeviceName,
       target: node.Name,
-      distance: node.Name == "Fog Server2" ? 100 : 60,
+      distance: node.Name.startsWith("Fog") ? 100 : 60,
     };
   });
   const nodeData = { nodes: network, links: links };
-  //console.log(nodeData)
+  console.log(links)
 
   const MyResponsiveNetwork = () => (
     <ResponsiveNetwork

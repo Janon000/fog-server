@@ -15,7 +15,7 @@ async function Stats() {
   return (
     <div className="h-full bg-[#0A133A]">
       <div className="flex flex-wrap justify-center text-[#DDDFE3]">
-        <div className=" shadow-lg rounded-lg h-[320px] m-5 p-2 bg-[#0E2162] w-full 3xl:flex-grow 3xl:mx-8">
+        <div className=" shadow-lg rounded-lg h-[320px] m-5 p-2 bg-[#0E2162] w-[500px] 3xl:flex-grow 3xl:mx-8">
           <div className="w-full text-center font-semibold">Network</div>
           <Network network={data["Network"]} />
         </div>
